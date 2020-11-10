@@ -5,7 +5,7 @@
  xmlns:tns = "http://www.examples.com/wsdl/ClientService.wsdl"
  xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
  
- <message name = "CreateClientRequest">
+ <message name = "registerClientRequest">
     <part name = "document" type = "xsd:string"/>
     <part name = "name" type = "xsd:string"/>
     <part name = "lastName" type = "xsd:string"/>
@@ -13,7 +13,7 @@
     <part name = "phone" type = "xsd:string"/>
  </message>
   
- <message name = "CreateClientResponse">
+ <message name = "registerClientResponse">
     <part name = "name" type = "xsd:string"/>
     <part name = "lastName" type = "xsd:string"/>
     <part name = "email" type = "xsd:string"/>
@@ -23,7 +23,7 @@
  <message name = "PayWalletRequest">
     <part name = "document" type = "xsd:string"/>
     <part name = "phone" type = "xsd:string"/>
-    <part name = "value" type = "xsd:number"/>
+    <part name = "amount" type = "xsd:number"/>
  </message>
   
  <message name = "PayWalletResponse">
@@ -40,11 +40,11 @@
  </message>
  
  <portType name = "Client_PortType">
-    <operation name = "createClient">
-       <input message = "tns:CreateClientRequest"/>
-       <output message = "tns:CreateClientResponse"/>
+    <operation name = "registerClient">
+       <input message = "tns:registerClientRequest"/>
+       <output message = "tns:registerClientResponse"/>
     </operation>
-    <operation name = "rechargeWallet">
+    <operation name = "payWallet">
        <input message = "tns:PayWalletRequest"/>
        <output message = "tns:PayWalletResponse"/>
     </operation>
@@ -57,8 +57,8 @@
  <binding name = "Client_Binding" type = "tns:Client_PortType">
     <soap:binding style = "rpc"
        transport = "http://schemas.xmlsoap.org/soap/http"/>
-    <operation name = "createClient">
-       <soap:operation soapAction = "createClient"/>
+    <operation name = "registerClient">
+       <soap:operation soapAction = "registerClient"/>
        <input>
           <soap:body
              encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
@@ -73,8 +73,8 @@
              use = "encoded"/>
        </output>
     </operation>
-    <operation name = "rechargeWallet">
-       <soap:operation soapAction = "rechargeWallet"/>
+    <operation name = "payWallet">
+       <soap:operation soapAction = "payWallet"/>
        <input>
           <soap:body
              encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
