@@ -5,7 +5,7 @@ const PaymentController = {
     paymentFunctions: {
       makePayment: async function (arguments  , callback ) {
         try {
-          const payment  =  await PaymentService.makePayment(arguments.document.$value,arguments.amount.$value,
+          const payment  =  await PaymentService.makePayment(arguments.document.$value,parseFloat(arguments.amount.$value),
                                                             getRandomdigits(6));
           return {
             success:true,
