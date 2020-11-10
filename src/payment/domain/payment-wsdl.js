@@ -6,7 +6,6 @@ xmlns:tns = "http://www.examples.com/wsdl/UserService.wsdl"
 xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
 <message name = "MakePaymentRequest">
    <part name = "document" type = "xsd:string"/>
-   <part name = "phone" type = "xsd:string"/>
    <part name = "amount" type = "xsd:number"/>
 </message>
  
