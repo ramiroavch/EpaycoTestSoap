@@ -1,6 +1,6 @@
 const CustomError = require('../../../common/custom-error');
 const Payment = require('../domain/payment');
-const mailSender = require('../../../common/mailSender.js');
+const mailSender = require('../../../common/mailSender');
 const Client = require('../../client/domain/client');
 
 const makePayment = async(document,amount,token)=>{
