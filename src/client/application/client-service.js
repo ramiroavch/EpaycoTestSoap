@@ -2,12 +2,17 @@ const CustomError = require('../../../common/custom-error');
 const client = require('../domain/client');
 
 const createClient = async (document,name,lastname,email,phone)=>{
-    const response= new client({document,name,lastname,email,phone,balance:0});
     try{
+        const xs = await client.findOne({document:document,email:email});
+        clientExist(xs);
+        const response= new client({document,name,lastname,email,phone,balance:0});
         await response.save()
         return response;
-    } catch(e){
-        throw new CustomError(500,"Error al crear el cliente");
+    } catch(err){
+        console.log(err.message);
+
+        console.log(err.code);
+        throw new CustomError((err.code || 500), err.code ? err.message : "Error al crear el cliente");
     }
 }
 
@@ -41,6 +46,11 @@ const validateClient = client => {
         throw new CustomError(404,"Cliente no encontrado");
     }
 }; 
+
+const clientExist = client =>{
+    if(client!=null)
+        throw new CustomError(409,"El usuario ya existe");
+}
 
 module.exports={
     createClient,
