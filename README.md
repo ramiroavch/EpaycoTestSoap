@@ -16,7 +16,7 @@ la base de datos fue desarrollada con MongoDb.
 - MongoDB
 
 ## Ejecución del Proyeco
-####El proyecto se ejectura en el puerto: 3002
+#### El proyecto se ejectura en el puerto: 3002
 - `npm install` Instalación de dependencias
 - `npm start` Ejecución del proyecto
 
