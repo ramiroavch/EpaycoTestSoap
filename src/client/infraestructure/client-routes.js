@@ -4,8 +4,8 @@ const {ClientWsdl} = require('../../client/domain/client-wsdl')
 const {soap} = require('express-soap');
 const ClientRoutes = Express.Router();
 
-//clientRoutes.use('/',clientController.registerClient);
-//clientRoutes.use('/payWallet',clientController.payWallet);
+ClientRoutes.use('/',soap({services:ClientController,wsdl:ClientWsdl}));
+ClientRoutes.use('/pay-wallet',soap({services:ClientController,wsdl:ClientWsdl}));
 ClientRoutes.use("/get-balance", soap({services:ClientController,wsdl:
     ClientWsdl}));
 

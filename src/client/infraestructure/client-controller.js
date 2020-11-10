@@ -5,9 +5,11 @@ const ClientController = {
     clientFunctions: {
       getBalance: async function (arguments  , callback ) {
         try {
-          console.log(arguments);
-          const client  =  await ClientService.consultWallet(arguments.document,arguments.phone);
-          return arguments;
+          const client  =  await ClientService.consultWallet(arguments.document.$value,arguments.phone.$value);
+          return {
+            success:true,
+            balance:client.balance.toFixed(2)
+          };
         } catch (error) {
           callback({
             Fault: {
@@ -18,18 +20,12 @@ const ClientController = {
           })
         }
       },
-      rechargeWallet: async function (arguments  , callback ) {
+      payWallet: async function (arguments  , callback ) {
         try {
-          console.log(arguments.document.$value);
-          
-          console.log(arguments.phone.$value);
-          
-          console.log(arguments.amount.$value);
-
-          const client  =  await ClientService.payWallet(arguments.document.$value,arguments.phone.$value,arguments.amount.$value);
-          console.log(client);
-          console.log('Recharge wallet')
-          return arguments;
+          const client  =  await ClientService.payWallet(arguments.document.$value,arguments.phone.$value,parseFloat(arguments.amount.$value));
+          return {
+            success:true
+          };
         } catch (error) {
           callback({
             Fault: {
@@ -40,6 +36,23 @@ const ClientController = {
           })
         }
       },
+      registerClient: async function (arguments , callback ) {
+        try {
+          const client  =  await ClientService.createClient(arguments.document.$value,arguments.name.$value,
+                                                              arguments.lastname.$value,arguments.email.$value,arguments.phone.$value);
+          return {
+            success:true
+          };
+        } catch (error) {
+          callback({
+            Fault: {
+              success:false,
+              error: error.message ,
+              statusCode: error.statusCode? error.statusCode : 500
+            }
+          })
+        }
+      }
     },
   },
 };
