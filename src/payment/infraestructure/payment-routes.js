@@ -1,9 +1,11 @@
 const express = require("express");
-const paymentController = require('./payment-controller');
-const paymentRoutes = express.Router();
+const {PaymentController} = require('../infraestructure/payment-controller');
+const PaymentRoutes = express.Router();
+const {PaymentWsdl} = require('../domain/payment-wsdl');
+const {soap} = require('express-soap');
 
-//paymentRoutes.post('/',paymentController.makePayment);
+PaymentRoutes.use('/',soap({services:PaymentController,wsdl:PaymentWsdl}));
 
-//paymentRoutes.post('/auth',paymentController.authPayment);
+PaymentRoutes.use('/auth',soap({services:PaymentController,wsdl:PaymentWsdl}));
 
-module.exports = paymentRoutes;
+module.exports = PaymentRoutes;
