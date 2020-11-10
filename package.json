@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "express-soap": "^1.1.2",
     "mongoose": "^5.10.13",
+    "nodemailer": "^6.4.15",
     "soap": "^0.34.0"
   },
   "devDependencies": {
