@@ -9,9 +9,6 @@ const createClient = async (document,name,lastname,email,phone)=>{
         await response.save()
         return response;
     } catch(err){
-        console.log(err.message);
-
-        console.log(err.code);
         throw new CustomError((err.code || 500), err.code ? err.message : "Error al crear el cliente");
     }
 }

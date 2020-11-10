@@ -31,7 +31,6 @@ const authPayment = async(document,token)=>{
         checkCredit(client.balance,payment.amount);
         payment.status= "true";
         client.balance -=payment.amount;
-        console.log("El balance ess  "+client.balance)
         await client.save();
         await payment.save();
         return payment;
