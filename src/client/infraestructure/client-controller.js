@@ -15,7 +15,7 @@ const ClientController = {
             Fault: {
               success:false,
               error: error.message ,
-              statusCode: error.statusCode? error.statusCode : 500
+              statusCode: error.code? error.code : 500
             }
           })
         }
@@ -31,7 +31,7 @@ const ClientController = {
             Fault: {
               success:false,
               error: error.message ,
-              statusCode: error.statusCode? error.statusCode : 500
+              statusCode: error.code? error.code : 500
             }
           })
         }
@@ -48,7 +48,7 @@ const ClientController = {
             Fault: {
               success:false,
               error: error.message ,
-              statusCode: error.statusCode? error.statusCode : 500
+              statusCode: error.code? error.code : 500
             }
           })
         }
